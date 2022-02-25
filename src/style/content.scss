@@ -1,0 +1,24 @@
+.content-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 60%;
+    text-align: center;
+
+    button {
+        width: 60px;
+        height: 30px;
+        background-color: burlywood;
+        border: 1px solid brown;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: .5s ease-in-out;
+        margin: 1px;
+
+        &:hover {
+            width: 62px;
+            height: 32px;
+            margin: 0px;
+        }
+    }
+}
