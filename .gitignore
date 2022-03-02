@@ -1,1 +1,3 @@
 node_modules
+
+heroku git:remote -a qotd-website-aoj
