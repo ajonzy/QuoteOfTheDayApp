@@ -1,7 +1,5 @@
 import React, { Component } from "react"
-
-import Navbar from "../navbar"
-import Footer from "../footer"
+import Cookies from "js-cookie"
 
 export default class Auth extends Component {
     constructor() {
@@ -34,37 +32,38 @@ export default class Auth extends Component {
             })
         })
         .then(response => response.json())
-        .then(data => console.log(data))
+        .then(data => {
+            console.log(data)
+            if (data === "User verified") {
+                Cookies.set("username", this.state.usernameInput)
+                this.props.handleSuccesfulLogin(this.state.usernameInput)
+                this.props.history.push("/")
+            }
+        })
         .catch(error => console.log("Error logging in, ", error))
     }
 
     render() {
         return (
-            <div className="page-wrapper">
-                <Navbar />
-
-                <div className="content-wrapper">
-                    <h2>Login</h2>
-                    <form onSubmit={this.handleSubmit}>
-                        <input 
-                            type="text"
-                            name="usernameInput"
-                            value={this.state.usernameInput}
-                            onChange={this.handleChange}
-                            placeholder="Username"
-                        />
-                        <input 
-                            type="password"
-                            name="passwordInput"
-                            value={this.state.passwordInput}
-                            onChange={this.handleChange}
-                            placeholder="Password"
-                        />
-                        <button type="submit">Submit</button>
-                    </form>
-                </div>
-
-                <Footer />
+            <div className="content-wrapper">
+                <h2>Login</h2>
+                <form onSubmit={this.handleSubmit}>
+                    <input 
+                        type="text"
+                        name="usernameInput"
+                        value={this.state.usernameInput}
+                        onChange={this.handleChange}
+                        placeholder="Username"
+                    />
+                    <input 
+                        type="password"
+                        name="passwordInput"
+                        value={this.state.passwordInput}
+                        onChange={this.handleChange}
+                        placeholder="Password"
+                    />
+                    <button type="submit">Submit</button>
+                </form>
             </div>
         )
     }

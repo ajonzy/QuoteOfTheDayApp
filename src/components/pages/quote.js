@@ -1,8 +1,5 @@
 import React, { Component } from "react"
 
-import Navbar from "../navbar"
-import Footer from "../footer"
-
 export default class Quote extends Component {
     constructor() {
         super()
@@ -47,15 +44,9 @@ export default class Quote extends Component {
 
     render() {
         return (
-            <div className="page-wrapper">
-                <Navbar />
-
-                <div className="content-wrapper">
-                    <p className="quote">{this.state.data.text}</p>
-                    <p className="author">- {this.state.data.author}</p>
-                </div>
-
-                <Footer />
+            <div className="content-wrapper">
+                <p className="quote">{this.state.data.text}</p>
+                <p className="author">- {this.state.data.author}</p>
             </div>
         )
     }
